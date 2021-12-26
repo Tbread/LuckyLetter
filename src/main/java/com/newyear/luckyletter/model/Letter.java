@@ -23,4 +23,7 @@ public class Letter extends TimeStamped{
     @Column(nullable = false)
     private Long userId;
 
+    @Column(nullable = false)
+    private String title;
+
 }
