@@ -36,6 +36,8 @@ dependencies {
     implementation 'org.apache.commons:commons-lang3:3.12.0'
     //mariaDB
     implementation 'org.mariadb.jdbc:mariadb-java-client:3.0.2-rc'
+    // Validation
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
 }
 
 test {
