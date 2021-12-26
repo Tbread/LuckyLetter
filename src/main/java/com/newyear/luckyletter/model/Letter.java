@@ -21,6 +21,6 @@ public class Letter extends TimeStamped{
     private String contents;
 
     @Column(nullable = false)
-    private Long getUserId;
+    private Long userId;
 
 }
