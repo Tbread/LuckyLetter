@@ -27,6 +27,13 @@ public class AccountService {
     public SignUpResponseDto register(SignUpRequestDto signUpRequestDto) {
         String username = signUpRequestDto.getUsername();
         SignUpResponseDto signUpResponseDto;
+        if(username == null||signUpRequestDto.getPassword() == null){
+            signUpResponseDto = SignUpResponseDto.builder()
+                    .message("아이디 또는 비밀번호가 입력되지 않았습니다.")
+                    .success(false)
+                    .build();
+            return signUpResponseDto;
+        }
         if (accountRepository.findByUsername(username).isPresent()) {
             signUpResponseDto = SignUpResponseDto.builder()
                     .message("이미 존재하는 아이디입니다.")
