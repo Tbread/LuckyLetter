@@ -1,21 +1,21 @@
 package com.newyear.luckyletter.dto.response;
 
+import com.newyear.luckyletter.dto.JwtToken;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@NoArgsConstructor
 @Getter
-public class SignUpResponseDto {
+@NoArgsConstructor
+public class LoginResponseDto {
     private boolean success;
     private String message;
-    private String username;
+    private JwtToken token;
 
     @Builder
-    public SignUpResponseDto(boolean success,String message,String username){
+    public LoginResponseDto(boolean success, String message, JwtToken token) {
         this.success = success;
         this.message = message;
-        this.username = username;
+        this.token = token;
     }
-
 }

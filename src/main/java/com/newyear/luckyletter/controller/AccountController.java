@@ -1,6 +1,8 @@
 package com.newyear.luckyletter.controller;
 
+import com.newyear.luckyletter.dto.request.LoginRequestDto;
 import com.newyear.luckyletter.dto.request.SignUpRequestDto;
+import com.newyear.luckyletter.dto.response.LoginResponseDto;
 import com.newyear.luckyletter.dto.response.SignUpResponseDto;
 import com.newyear.luckyletter.dto.response.TestDto;
 import com.newyear.luckyletter.service.AccountService;
@@ -30,5 +32,10 @@ public class AccountController {
     @PostMapping("/register")
     public ApiResult<SignUpResponseDto> register(@RequestBody SignUpRequestDto signUpRequestDto){
         return success(accountService.register(signUpRequestDto));
+    }
+
+    @PostMapping("/login")
+    public ApiResult<LoginResponseDto> login(@RequestBody LoginRequestDto loginRequestDto){
+        return success(accountService.login(loginRequestDto));
     }
 }
