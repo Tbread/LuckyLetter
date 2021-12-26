@@ -42,7 +42,7 @@ public class AccountService {
                     .build();
             return signUpResponseDto;
         }
-        if (accountRepository.findByUsername(username) == null) {
+        if (accountRepository.findByUsername(username) != null) {
             signUpResponseDto = SignUpResponseDto.builder()
                     .message("이미 존재하는 아이디입니다.")
                     .success(false)
