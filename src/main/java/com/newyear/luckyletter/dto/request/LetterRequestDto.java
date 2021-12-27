@@ -17,4 +17,7 @@ public class LetterRequestDto {
 
     @NotEmpty
     private String writer;
+
+    @NotEmpty
+    private String title;
 }

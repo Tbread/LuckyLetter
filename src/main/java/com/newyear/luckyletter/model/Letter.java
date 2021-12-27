@@ -1,5 +1,6 @@
 package com.newyear.luckyletter.model;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -26,4 +27,11 @@ public class Letter extends TimeStamped{
     @Column(nullable = false)
     private String title;
 
+    @Builder
+    public Letter(String writer,String contents,Long userId, String title){
+        this.writer = writer;
+        this.contents = contents;
+        this.userId = userId;
+        this.title = title;
+    }
 }
