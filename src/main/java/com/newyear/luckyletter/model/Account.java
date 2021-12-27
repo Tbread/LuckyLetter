@@ -20,9 +20,13 @@ public class Account extends TimeStamped{
     @Column(nullable = false)
     private String password;
 
+    @Column(nullable = false)
+    private String uuid;
+
     @Builder
-    public Account(String username,String password){
+    public Account(String username,String password,String uuid){
         this.username = username;
         this.password = password;
+        this.uuid = uuid;
     }
 }

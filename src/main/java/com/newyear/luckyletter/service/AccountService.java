@@ -18,6 +18,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.UUID;
 
 @RequiredArgsConstructor
 @Service
@@ -50,15 +51,18 @@ public class AccountService {
                     .build();
         } else {
             String password = passwordEncoder.encode(signUpRequestDto.getPassword());
+            String uuid = UUID.randomUUID().toString();
             Account account = Account.builder()
                     .username(username)
                     .password(password)
+                    .uuid(uuid)
                     .build();
             accountRepository.save(account);
             signUpResponseDto = SignUpResponseDto.builder()
                     .message("성공적으로 가입이 완료되었습니다.")
                     .success(true)
                     .username(username)
+                    .uuid(uuid)
                     .build();
 
         }
