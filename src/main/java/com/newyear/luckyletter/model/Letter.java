@@ -10,6 +10,9 @@ import javax.persistence.*;
 @Entity
 @NoArgsConstructor
 public class Letter extends TimeStamped{
+    public enum letterVisual {
+        LUCKYBAG,MONEYBAG
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,11 +30,16 @@ public class Letter extends TimeStamped{
     @Column(nullable = false)
     private String title;
 
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    private Letter.letterVisual letterVisual;
+
     @Builder
-    public Letter(String writer,String contents,Long userId, String title){
+    public Letter(String writer,String contents,Long userId, String title, letterVisual letterVisual){
         this.writer = writer;
         this.contents = contents;
         this.userId = userId;
         this.title = title;
+        this.letterVisual = letterVisual;
     }
 }

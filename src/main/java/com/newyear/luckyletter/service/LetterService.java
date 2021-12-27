@@ -39,12 +39,14 @@ public class LetterService {
                     .contents(letterRequestDto.getContents())
                     .writer(letterRequestDto.getWriter())
                     .userId(letterRequestDto.getUserId())
+                    .letterVisual(letterRequestDto.getLetterVisual())
                     .build();
             letterRepository.save(letter);
             letterWriteResponseDto = LetterWriteResponseDto.builder()
                     .title(letterRequestDto.getTitle())
                     .writer(letterRequestDto.getWriter())
                     .contents(letterRequestDto.getContents())
+                    .letterVisual(letterRequestDto.getLetterVisual())
                     .success(true)
                     .message("성공적으로 편지가 작성되었습니다.")
                     .build();
@@ -62,6 +64,7 @@ public class LetterService {
             LetterListResponseDto letterListResponseDto = LetterListResponseDto.builder()
                     .title(letter.getTitle())
                     .writer(letter.getWriter())
+                    .letterVisual(letter.getLetterVisual())
                     .build();
             letterListResponseDtos.add(letterListResponseDto);
         }
@@ -101,5 +104,5 @@ public class LetterService {
         return letterViewResponseDto;
     }
 
-    
+
 }

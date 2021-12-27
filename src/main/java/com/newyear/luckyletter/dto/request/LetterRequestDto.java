@@ -1,5 +1,6 @@
 package com.newyear.luckyletter.dto.request;
 
+import com.newyear.luckyletter.model.Letter;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -20,4 +21,7 @@ public class LetterRequestDto {
 
     @NotEmpty
     private String title;
+
+    @NotEmpty
+    private Letter.letterVisual letterVisual;
 }
