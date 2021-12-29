@@ -81,7 +81,7 @@ public class LetterService {
         LetterViewResponseDto letterViewResponseDto;
         LocalDate now = LocalDate.now();
         LocalDate sulnal = LocalDate.of(2022, 2, 1);
-        if (sulnal.isAfter(now) && sulnal.isEqual(now)) {
+        if (sulnal.isAfter(now) && !sulnal.isEqual(now)) {
             letterViewResponseDto = LetterViewResponseDto.builder()
                     .success(false)
                     .message("설날이후에 편지를 확인 할 수 있습니다.")
