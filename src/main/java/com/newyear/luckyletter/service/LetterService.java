@@ -13,7 +13,11 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.text.DateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -75,6 +79,15 @@ public class LetterService {
     //편지 단일 조회
     public LetterViewResponseDto view(UserDetails userDetails, Long letterId) {
         LetterViewResponseDto letterViewResponseDto;
+        LocalDate now = LocalDate.now();
+        LocalDate sulnal = LocalDate.of(2022, 2, 1);
+        if (sulnal.isAfter(now) && sulnal.isEqual(now)) {
+            letterViewResponseDto = LetterViewResponseDto.builder()
+                    .success(false)
+                    .message("설날이후에 편지를 확인 할 수 있습니다.")
+                    .build();
+            return letterViewResponseDto;
+        }
         Optional<Letter> letter = letterRepository.findById(letterId);
         if (!letter.isPresent()) {
             letterViewResponseDto = LetterViewResponseDto.builder()
@@ -104,7 +117,7 @@ public class LetterService {
         return letterViewResponseDto;
     }
 
-    public Long count(){
+    public Long count() {
         return letterRepository.count();
     }
 
