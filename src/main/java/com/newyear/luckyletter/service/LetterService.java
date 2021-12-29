@@ -104,5 +104,8 @@ public class LetterService {
         return letterViewResponseDto;
     }
 
+    public Long count(){
+        return letterRepository.count();
+    }
 
 }

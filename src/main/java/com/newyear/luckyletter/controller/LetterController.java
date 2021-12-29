@@ -4,6 +4,7 @@ import com.newyear.luckyletter.dto.request.LetterRequestDto;
 import com.newyear.luckyletter.dto.response.LetterListResponseDto;
 import com.newyear.luckyletter.dto.response.LetterViewResponseDto;
 import com.newyear.luckyletter.dto.response.LetterWriteResponseDto;
+import com.newyear.luckyletter.model.Letter;
 import com.newyear.luckyletter.service.LetterService;
 import com.newyear.luckyletter.service.UserDetailsImpl;
 import lombok.RequiredArgsConstructor;
@@ -32,5 +33,10 @@ public class LetterController {
     @GetMapping("/letter/{letterId}")
     public ApiResult<LetterViewResponseDto> view(@AuthenticationPrincipal UserDetailsImpl userDetails, @PathVariable Long letterId){
         return success(letterService.view(userDetails,letterId));
+    }
+
+    @GetMapping("letter/all")
+    public ApiResult<Long> count(){
+        return success(letterService.count());
     }
 }
