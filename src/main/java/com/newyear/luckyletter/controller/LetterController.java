@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 import static com.newyear.luckyletter.utils.ApiResultMaker.*;
@@ -21,7 +22,7 @@ public class LetterController {
     private final LetterService letterService;
 
     @PostMapping("/letter")
-    public ApiResult<LetterWriteResponseDto> write(@RequestBody LetterRequestDto letterRequestDto){
+    public ApiResult<LetterWriteResponseDto> write(@RequestBody @Valid LetterRequestDto letterRequestDto){
         return success(letterService.write(letterRequestDto));
     }
 

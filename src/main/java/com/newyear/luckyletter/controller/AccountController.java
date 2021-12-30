@@ -11,6 +11,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+
 import static com.newyear.luckyletter.utils.ApiResultMaker.*;
 
 
@@ -30,12 +32,12 @@ public class AccountController {
     }
 
     @PostMapping("/register")
-    public ApiResult<SignUpResponseDto> register(@RequestBody SignUpRequestDto signUpRequestDto){
+    public ApiResult<SignUpResponseDto> register(@RequestBody @Valid SignUpRequestDto signUpRequestDto){
         return success(accountService.register(signUpRequestDto));
     }
 
     @PostMapping("/login")
-    public ApiResult<LoginResponseDto> login(@RequestBody LoginRequestDto loginRequestDto){
+    public ApiResult<LoginResponseDto> login(@RequestBody @Valid LoginRequestDto loginRequestDto){
         return success(accountService.login(loginRequestDto));
     }
 }
